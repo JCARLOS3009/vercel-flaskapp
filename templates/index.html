@@ -29,6 +29,7 @@
                     <th>Nome</th>
                     <th>Idade</th>
                     <th>Email</th>
+                    <th><a href="/criar" >Cadastrar Pessoa</a> </th>
                 </tr>
             </thead>
             <tbody>
@@ -38,7 +39,10 @@
                         <td>{{ pessoa.nome }}</td>
                         <td>{{ pessoa.idade }}</td>
                         <td>{{ pessoa.email }}</td>
-
+                        <td>
+                            <a href="{{ url_for('editar', id=pessoa.id) }}">Editar</a> |
+                            <a href="{{ url_for('excluir', id=pessoa.id) }}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
