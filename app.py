@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import text  # Adicione essa importação
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy import text
+from sqlalchemy.exc import OperationalError, IntegrityError  # Corrigido para importar o OperationalError
 
 app = Flask(__name__)
 
@@ -33,15 +33,19 @@ def test_db_connection():
     try:
         # Use a função text() para a consulta SQL
         db.session.execute(text('SELECT 1'))  # Agora 'text' está definido
-        db.session.commit()  # Se não houver erro, a conexão foi bem-sucedida
+        # Não é necessário commit() para uma consulta SELECT
         return "Conexão com o banco de dados PostgreSQL bem-sucedida!"
     except OperationalError as e:
         # Caso haja erro na conexão
         return f"Erro ao conectar com o banco de dados: {e}"
+    except Exception as e:
+        # Captura erros gerais do SQLAlchemy ou outros tipos de erro
+        return f"Ocorreu um erro ao tentar conectar: {e}"
 
 @app.route('/')
-def home():
-    return "Hello, Vercel!"
+def pessoas():
+    pessoas = Pessoa.query.all()
+    return render_template('index.html', pessoas=pessoas)
 
 if __name__ == '__main__':
     app.run(debug=True)
