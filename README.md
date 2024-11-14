@@ -1,6 +1,7 @@
 # Aplicação Flask com PostgreSQL
 
 Este é um exemplo de aplicação Flask conectada a um banco de dados PostgreSQL. O aplicativo permite realizar operações CRUD (Criar, Ler, Atualizar, Excluir) para uma tabela simples de pessoas, armazenando nome, data de nascimento e e-mail.
+
 Link do deploy:
 https://vercel-flaskapp.vercel.app
 
