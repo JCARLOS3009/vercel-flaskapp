@@ -1,0 +1,449 @@
+/* Estilos básicos para o CRUD */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #101010;
+    color: #f1f1f1;
+}
+/* Estilos para a div container */
+.container {
+    margin: 20px; /* Margem de 20px */
+    padding: 10px; /* Adicionei um padding opcional para dar espaço interno */
+    box-sizing: border-box; /* Garante que a margem e o padding não afetem o tamanho da div */
+}
+
+/* Responsividade para telas pequenas */
+@media screen and (max-width: 768px) {
+    .container {
+        margin: 10px; /* Reduz margem em telas menores */
+    }
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2rem;
+    color: #00ffcc;
+}
+/* Estilos para as tags h2 com efeito neon */
+h2 {
+    font-size: 2rem;
+    color: #00ffcc; /* Cor neon */
+    text-align: center;
+    text-transform: uppercase; /* Maiúsculas */
+    letter-spacing: 2px; /* Espaçamento entre as letras */
+    margin-top: 20px;
+    position: relative;
+    font-weight: bold;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+
+/* Efeito ao focar (para acessibilidade) */
+h2:focus {
+    outline: none;
+    color: #1affd1;
+    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc, 0 0 40px #00ffcc;
+}
+
+/* Formulários */
+.form {
+    width: 100%; /* Full width */
+    max-width: 600px; /* Limit to 600px for larger screens */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px #00ffcc;
+    border: 1px solid #333;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+/* Inputs and buttons */
+.form input, .form button {
+    width: 100%; /* Full width */
+    padding: 12px; /* Increased padding for better UX */
+    margin: 10px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+/* Input styles */
+.form input {
+    border: 1px solid #444;
+    background-color: #333;
+    color: #f1f1f1;
+    font-size: 16px; /* Increased font size for better readability */
+}
+
+/* Focus state for inputs */
+.form input:focus {
+    border-color: #00ffcc;
+    outline: none; /* Remove default outline */
+}
+
+/* Button styles */
+.form button {
+    background-color: #00ffcc;
+    border: none;
+    color: #222;
+    font-size: 16px; /* Ensure button text is legible */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Button hover state */
+.form button:hover {
+    background-color: #1affd1;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767px) {
+    .form {
+        margin: 10px; /* Reduce margin on small screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .form input, .form button {
+        padding: 15px; /* Larger touch targets on mobile */
+    }
+}
+
+
+/* Tabela */
+table {
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #222;
+    box-shadow: 0 4px 15px #00ffcc;
+    border: 1px solid #333;
+    color: #f1f1f1;
+}
+
+table th {
+    padding: 15px;
+    background-color: #333;
+    color: #00ffcc;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #00ffcc;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #444;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #262626;
+}
+
+table tbody td {
+    text-align: center;
+    padding: 12px;
+    color: #ccc;
+}
+
+table tbody td a {
+    color: #00ffcc;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 5px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+table tbody td a:hover {
+    color: #1affd1;
+    text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+    text-decoration: underline;
+}
+
+table tbody tr:hover {
+    background-color: #333;
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+}
+
+/* Botões */
+.toggle-button, .create-button {
+    padding: 10px 20px;
+    background-color: #00ffcc;
+    border: none;
+    border-radius: 5px;
+    color: #222;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover, .create-button:hover {
+    background-color: #1affd1;
+}
+
+.toggle-button, .create-button {
+    float: right;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .form {
+        max-width: 100%;
+    }
+
+    th, td {
+        font-size: 14px;
+    }
+
+    .toggle-button, .create-button {
+        padding: 6px 12px;
+    }
+}
+
+/* Modos de cor */
+body.light-mode {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: #f9f9f9;
+}
+
+.light-mode .form, .light-mode table {
+    background-color: #fff;
+    color: #333;
+}
+
+.dark-mode .form, .dark-mode table {
+    background-color: #444;
+    color: #f9f9f9;
+}
+/* Estilos gerais para o container */
+#outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Garantir que o botão esteja centralizado na tela */
+    margin-top: 1px; /* Diminuir a margem superior para aproximar o botão do topo */
+}
+
+/* Estilo do botão */
+.button_slide a {
+    display: inline-block;
+    padding: 15px 30px;
+    background: transparent; /* Fundo transparente */
+    color: #00ffcc; /* Cor do texto neon */
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid #00ffcc; /* Borda neon */
+    border-radius: 50px; /* Bordas arredondadas */
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5); /* Sombra neon suave */
+}
+
+/* Efeito de hover - botão preenchido com neon */
+.button_slide a:hover {
+    background: #00ffcc; /* Preenche o botão com a cor neon */
+    color: #222; /* Texto escuro quando o botão é preenchido */
+    border-color: #00ffcc; /* Mantém a borda neon */
+    transform: translateY(-5px); /* Levantar o botão ao passar o mouse */
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.8), 0 0 40px rgba(0, 153, 204, 1); /* Efeito de brilho neon mais forte */
+}
+
+/* Efeito de animação para o slide */
+.button_slide {
+    overflow: hidden;
+}
+
+.slide_down {
+    animation: slideDown 0.5s ease-in-out; /* Animação do botão para aparecer */
+}
+
+/* Keyframes para a animação do slide */
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Efeito de foco para acessibilidade */
+.button_slide a:focus {
+    outline: none;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 1); /* Efeito de foco mais pronunciado */
+}
+/* Estilo do link */
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #00ffcc; /* Cor neon */
+    font-family: 'Roboto', sans-serif;
+    font-size: .5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Espaçamento entre letras */
+    border: 2px solid #00ffcc; /* Borda neon */
+    border-radius: 5px; /* Bordas arredondadas */
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5); /* Sombra suave neon */
+}
+
+/* Efeito de hover no link */
+a:hover {
+    color: #222; /* Texto escuro quando em hover */
+    background-color: #00ffcc; /* Preenche o fundo com a cor neon */
+    border-color: #00ffcc; /* Mantém a borda neon */
+    transform: translateY(-5px); /* Levanta o link ao passar o mouse */
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.8), 0 0 40px rgba(0, 153, 204, 1); /* Brilho neon mais forte */
+}
+
+/* Efeito de animação suave no foco */
+a:focus {
+    outline: none;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 1); /* Efeito de foco neon */
+}
+
+/* Efeito de brilho neon ao passar o mouse */
+a:hover {
+    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc, 0 0 40px #00ffcc; /* Brilho forte */
+}
+.load-more-btn,
+.load-minus-btn {
+    display: inline-block;
+    margin-top: 20px;  /* Adiciona um espaço acima dos botões */
+}
+
+.pagination-buttons {
+    display: flex;
+    justify-content: space-between;  /* Alinha os botões às extremidades */
+    align-items: center;  /* Alinha verticalmente no centro */
+    margin-top: 20px;  /* Adiciona espaço entre os botões e a tabela */
+    margin-left: center;
+}
+
+.pagination-buttons .load-more-btn {
+    text-align: right;
+}
+
+.pagination-buttons .load-minus-btn {
+    text-align: left;
+}
+/* Configura o fundo escuro e a fonte principal */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #0d0d0d;
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Container centralizado com bordas de neon */
+.container {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 5px rgba(0, 255, 255, 0.2);
+    border: 2px solid #00ffcc;
+    max-width: 1200px;
+    width: 90%;
+}
+
+/* Estilo do título */
+h2 {
+    color: #00ffcc;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+/* Formulário de entrada com estilo tecnológico */
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px; /* Diminui a margem superior do formulário */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    color: #00ffcc;
+    margin-bottom: 5px;
+    display: block; /* Altera de inline-block para block para garantir que as labels ocupem toda a largura disponível */
+    width: 100%; /* Garante que as labels ocupem 100% da largura disponível */
+}
+
+
+
+input[type="text"],
+input[type="number"],
+input[type="email"] {
+    background-color: #0d0d0d;
+    border: 1px solid #00ffcc;
+    color: #00ffcc;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+    width: 100%; /* Faz os inputs ocuparem toda a largura disponível */
+    box-sizing: border-box; /* Garante que o padding e a borda não afetem a largura */
+}
+
+
+/* Estilo dos botões */
+button {
+    background-color: #00ffcc;
+    color: #0d0d0d;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background-color: #009999;
+    box-shadow: 0px 0px 10px 2px #00ffcc;
+}
+
+a {
+    color: #00ffcc;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 20px;
+    display: inline-block;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #00cccc;
+}
+
+

@@ -23,7 +23,7 @@
         {% endwith %}
 
         <!-- Formulário de cadastro de nova pessoa -->
-        <form action="{{ url_for('criar_pessoa_form') }}" method="POST">
+        <form action="{{ url_for('criar_pessoa') }}" method="POST">
             <div class="form-group">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" required>
@@ -46,7 +46,7 @@
         <!-- Botão para Voltar para Home -->
         <div class="back-home">
             <a href="{{ url_for('pessoas') }}">
-                <button type="button">Voltar à Home</button>
+                Voltar à Home
             </a>
         </div>
     </div>

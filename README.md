@@ -26,14 +26,16 @@ Crie um ambiente virtual para isolar as dependências do projeto:
 
 # Navegue até a pasta onde está o seu projeto
 cd /caminho/para/seu/projeto
-
+```
+```bash
 # Crie o ambiente virtual
 python -m venv venv
-
+```
+```bash
 # Ative o ambiente virtual:
 # Para Windows:
-
 venv\Scripts\activate
+```
 # Para Linux/Mac:
 source venv/bin/activate
 ```
@@ -60,10 +62,8 @@ Para um banco remoto (usando a URI fornecida no código):
 ```
 
 python
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://default:Ew4LKOoIpBv5@ep-falling-hall-a43wfsot.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require'
 Se for usar um banco local, altere a URI para algo assim:
 
-python
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://usuario:senha@localhost:5432/verceldb'
 usuario: Seu nome de usuário do PostgreSQL (geralmente postgres).
 senha: Sua senha do PostgreSQL.
