@@ -47,7 +47,16 @@
                 {% endfor %}
             </tbody>
         </table>
-
+        <!-- Navegação entre páginas -->
+        <div class="pagination-buttons">
+            {% if current_page > 1 %}
+                <a class="load-minus-btn" href="{{ url_for('pessoas', page=current_page - 1) }}">Anterior</a>
+            {% endif %}
+            
+            {% if current_page < total_pages %}
+                <a class="load-more-btn" href="{{ url_for('pessoas', page=current_page + 1) }}">Próximo</a>
+            {% endif %}
+        </div>
      
     </div>
 </body>
