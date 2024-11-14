@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Pessoa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>Editar Pessoa</h1>
+
+    <!-- Formulário de edição de pessoa -->
+    <form action="{{ url_for('editar', id=pessoa.id) }}" method="POST" class="form">
+        <input type="text" name="nome" value="{{ pessoa.nome }}" required placeholder="Nome">
+        <input type="number" name="idade" value="{{ pessoa.idade }}" required placeholder="Idade">
+        <input type="email" name="email" value="{{ pessoa.email }}" required placeholder="Email">
+        <button type="submit">Atualizar Pessoa</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('pessoas') }}">Voltar para a lista de pessoas</a>
+
+</body>
+</html>
