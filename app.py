@@ -34,7 +34,7 @@ def home():
 @app.route('/pessoas')
 def pessoas():
     # Número de itens por página
-    items_per_page = 5
+    items_per_page = 10
     page = request.args.get('page', 1, type=int)  # Pega o parâmetro 'page' da URL, se não, usa 1 como padrão
 
     # Usando o paginate para pegar 5 registros por vez, ordenados pelo id
