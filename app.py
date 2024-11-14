@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -10,13 +11,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-# Definindo o modelo de dados (Tabela "pessoa")
+# Definindo o modelo de dados (Tabela "pessoa") com data de nascimento
 class Pessoa(db.Model):
     __tablename__ = 'pessoa'
 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(80), nullable=False)
-    idade = db.Column(db.Integer, nullable=False)
+    data_nascimento = db.Column(db.Date, nullable=False)  # Alteração para data de nascimento
     email = db.Column(db.String(120), unique=True, nullable=False)
 
     def __repr__(self):
@@ -37,12 +38,11 @@ def pessoas():
     items_per_page = 7
     page = request.args.get('page', 1, type=int)  # Pega o parâmetro 'page' da URL, se não, usa 1 como padrão
 
-    # Usando o paginate para pegar 5 registros por vez, ordenados pelo id
+    # Usando o paginate para pegar 7 registros por vez, ordenados pelo id
     pessoas = Pessoa.query.order_by(Pessoa.id).paginate(page=page, per_page=items_per_page, error_out=False)
 
     return render_template('index.html', pessoas=pessoas.items, 
                            total_pages=pessoas.pages, current_page=pessoas.page)
-
 
 @app.route('/criar', methods=['GET'])
 def criar_pessoa_form():
@@ -51,8 +51,11 @@ def criar_pessoa_form():
 @app.route('/pessoa', methods=['POST'])
 def criar_pessoa():
     nome = request.form['nome']
-    idade = request.form['idade']
+    data_nascimento_str = request.form['data_nascimento']
     email = request.form['email']
+
+    # Converte a string de data de nascimento para um objeto datetime.date
+    data_nascimento = datetime.strptime(data_nascimento_str, '%Y-%m-%d').date()
 
     # Verificar se o e-mail já existe
     pessoa_existente = Pessoa.query.filter_by(email=email).first()
@@ -60,7 +63,7 @@ def criar_pessoa():
         return redirect(url_for('pessoas'))
 
     # Tentar adicionar a nova pessoa ao banco
-    nova_pessoa = Pessoa(nome=nome, idade=idade, email=email)
+    nova_pessoa = Pessoa(nome=nome, data_nascimento=data_nascimento, email=email)
     db.session.add(nova_pessoa)
     try:
         db.session.commit()
@@ -84,8 +87,11 @@ def editar(id):
 
     if request.method == 'POST':
         pessoa.nome = request.form['nome']
-        pessoa.idade = request.form['idade']
+        data_nascimento_str = request.form['data_nascimento']
         pessoa.email = request.form['email']
+
+        # Converte a string de data de nascimento para um objeto datetime.date
+        pessoa.data_nascimento = datetime.strptime(data_nascimento_str, '%Y-%m-%d').date()
 
         try:
             db.session.commit()

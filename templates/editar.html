@@ -13,7 +13,10 @@
     <!-- Formulário de edição de pessoa -->
     <form action="{{ url_for('editar', id=pessoa.id) }}" method="POST" class="form">
         <input type="text" name="nome" value="{{ pessoa.nome }}" required placeholder="Nome">
-        <input type="number" name="idade" value="{{ pessoa.idade }}" required placeholder="Idade">
+        
+        <!-- Campo de Data de Nascimento -->
+        <input type="date" name="data_nascimento" value="{{ pessoa.data_nascimento }}" required placeholder="Data de Nascimento">
+        
         <input type="email" name="email" value="{{ pessoa.email }}" required placeholder="Email">
         <button type="submit">Atualizar Pessoa</button>
     </form>
