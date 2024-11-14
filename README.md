@@ -1,6 +1,8 @@
 # Aplicação Flask com PostgreSQL
 
 Este é um exemplo de aplicação Flask conectada a um banco de dados PostgreSQL. O aplicativo permite realizar operações CRUD (Criar, Ler, Atualizar, Excluir) para uma tabela simples de pessoas, armazenando nome, data de nascimento e e-mail.
+Link do deploy:
+https://vercel-flaskapp.vercel.app
 
 ## Componentização no Frontend:
 Templates Jinja2: O uso de templates Jinja2 (render_template('index.html'), render_template('cadastrar.html'), etc.) contribui para a componentização do frontend. Isso permite que você tenha diferentes partes da aplicação divididas em componentes reutilizáveis, como:
