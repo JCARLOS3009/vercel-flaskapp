@@ -2,6 +2,18 @@
 
 Este é um exemplo de aplicação Flask conectada a um banco de dados PostgreSQL. O aplicativo permite realizar operações CRUD (Criar, Ler, Atualizar, Excluir) para uma tabela simples de pessoas, armazenando nome, idade e e-mail.
 
+## Componentização no Frontend:
+Templates Jinja2: O uso de templates Jinja2 (render_template('index.html'), render_template('cadastrar.html'), etc.) contribui para a componentização do frontend. Isso permite que você tenha diferentes partes da aplicação divididas em componentes reutilizáveis, como:
+
+Um template para cadastrar pessoas (cadastrar.html).
+Um template para editar pessoas (editar.html).
+Um template para listar pessoas (index.html).
+
+## Extensibilidade:
+Rotas e Funcionalidades Fáceis de Expandir: A estrutura de rotas que você tem (/pessoas, /criar, /excluir/<int:id>, /pessoa/<int:id>) é bem modular, permitindo adicionar mais funcionalidades sem dificuldade. Por exemplo, se você precisar adicionar um recurso de pesquisa de pessoas, você pode facilmente criar uma nova rota /pesquisar e adaptar o código para suportar filtros.
+
+Banco de Dados e Modelos: O uso do SQLAlchemy e a definição do modelo Pessoa também contribuem para a extensibilidade, pois você pode adicionar novas colunas e relacionamentos à medida que o sistema cresce (por exemplo, relacionamentos entre pessoa e endereço, pessoa e telefone, etc.).
+
 ## Requisitos
 
 - **Python 3.x**: Verifique se o Python está instalado no seu sistema.
