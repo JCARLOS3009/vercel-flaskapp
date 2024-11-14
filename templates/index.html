@@ -27,9 +27,9 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Idade</th>
+                    <th>Data de Nascimento</th>
                     <th>Email</th>
-                    <th><a href="/criar" >Cadastrar Pessoa</a> </th>
+                    <th><a href="/criar">Cadastrar Pessoa</a></th>
                 </tr>
             </thead>
             <tbody>
@@ -37,7 +37,7 @@
                     <tr>
                         <td>{{ pessoa.id }}</td> <!-- Exibindo o ID -->
                         <td>{{ pessoa.nome }}</td>
-                        <td>{{ pessoa.idade }}</td>
+                        <td>{{ pessoa.data_nascimento.strftime('%d/%m/%Y') }}</td> <!-- Exibindo data de nascimento formatada -->
                         <td>{{ pessoa.email }}</td>
                         <td>
                             <a href="{{ url_for('editar', id=pessoa.id) }}">Editar</a> |
@@ -47,6 +47,7 @@
                 {% endfor %}
             </tbody>
         </table>
+        
         <!-- Navegação entre páginas -->
         <div class="pagination-buttons">
             {% if current_page > 1 %}
@@ -57,7 +58,6 @@
                 <a class="load-more-btn" href="{{ url_for('pessoas', page=current_page + 1) }}">Próximo</a>
             {% endif %}
         </div>
-     
     </div>
 </body>
 </html>
